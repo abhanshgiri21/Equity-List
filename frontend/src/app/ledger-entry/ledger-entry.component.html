@@ -1,0 +1,59 @@
+<div class="outer-div">
+  <h1 class="bank-banner">EquityList Bank</h1>
+  <div class="balance-entry">
+    <div class="account-bal">
+      <h1>
+        Account Balance :
+        <span class="bold-text">$ {{ balance }}</span>
+        <div class="small period-text">
+          Period:
+          <span class="bold-text">
+            {{ "08/19/2014" | date }} - {{ "10/15/2014" | date }}</span
+          >
+        </div>
+      </h1>
+    </div>
+  </div>
+
+  <div class="ledger-selector">
+    <select
+      name="ledger-selector"
+      id="ledger-selector"
+      (change)="selectorChanged($event)"
+    >
+      <option *ngFor="let v of ledgerSelectValues" [value]="v.id">
+        {{ v.name }}
+      </option>
+    </select>
+  </div>
+
+  <div class="content">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Date</th>
+          <th>Type</th>
+          <th>Amount</th>
+          <th>Balance</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <!-- Table code goes here -->
+        <tr
+          class="data-rows"
+          *ngFor="let ledger of ledgers"
+          [class.red-background]="ledger.amount < 0"
+          [class.green-background]="ledger.amount > 0"
+        >
+          <th>{{ ledger | transactionDescription }}</th>
+          <th>{{ ledger.date | date : "medium" }}</th>
+          <th>{{ ledger.type }}</th>
+          <th>{{ ledger.amount }}</th>
+          <th>{{ ledger.balance }}</th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
