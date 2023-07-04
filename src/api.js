@@ -40,8 +40,4 @@ router.get("/complicatedLedger", (req, res) => {
 
 app.use("/.netlify/functions/api", router);
 
-// app.listen(port, () => {
-//   console.log(`Example app listening on port ${port}`);
-// });
-
 module.exports.handler = serverless(app);
