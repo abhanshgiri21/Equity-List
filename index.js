@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
 const app = express();
 const port = 3000;
 
@@ -11,6 +12,12 @@ const {
 
 app.use(cors());
 app.options("*", cors());
+
+app.get("/", (req, res) => {
+  res.sendfile("public/index.html");
+});
+
+app.use("/", express.static(path.join(__dirname, "public")));
 
 app.get("/simpleLedger", (req, res) => {
   res.json(simpleLedger);
