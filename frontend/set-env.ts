@@ -4,9 +4,11 @@ const targetPath = './src/environments/environment.ts';
 // Load node modules
 const colors = require('colors');
 // `environment.ts` file structure
+console.log('env vars are : ');
+console.log(process.env);
 const envConfigFile = `export const environment = {
     production: true,
-    apiUrl: ${process.env['API_URL']}
+    apiUrl: "https://main--phenomenal-otter-c5537d.netlify.app/.netlify/functions/api/"
   };  
 `;
 console.log(
