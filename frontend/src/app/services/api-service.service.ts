@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -7,7 +8,7 @@ import { Injectable } from '@angular/core';
 export class ApiServiceService {
   constructor(private http: HttpClient) {}
 
-  domain = 'http://localhost:3000/';
+  domain = environment.apiUrl;
   simpleLedgerPath = `${this.domain}simpleLedger`;
   duplicateLedgerPath = `${this.domain}duplicateLedger`;
   complicatedLedgerPath = `${this.domain}complicatedLedger`;
